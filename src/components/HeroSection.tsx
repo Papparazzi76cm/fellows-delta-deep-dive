@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Music, ShoppingCart } from 'lucide-react';
-import heroImage from '@/assets/hero-blues-stage.jpg';
+import heroImage from '@/assets/https://ibb.co/zHnHMC4t';
 
 const HeroSection = () => {
   const [scrollY, setScrollY] = useState(0);
