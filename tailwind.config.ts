@@ -44,6 +44,10 @@ export default {
 					DEFAULT: 'hsl(var(--accent))',
 					foreground: 'hsl(var(--accent-foreground))'
 				},
+				bronze: {
+					DEFAULT: 'hsl(var(--bronze))',
+					foreground: 'hsl(var(--bronze-foreground))'
+				},
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'
@@ -84,11 +88,41 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in-up': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateY(30px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'parallax-float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'wave': {
+					'0%, 100%': { transform: 'scaleY(1)' },
+					'50%': { transform: 'scaleY(1.5)' }
+				},
+				'glow': {
+					'0%, 100%': { opacity: '0.5' },
+					'50%': { opacity: '1' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in-up': 'fade-in-up 0.6s ease-out',
+				'parallax-float': 'parallax-float 3s ease-in-out infinite',
+				'wave': 'wave 1s ease-in-out infinite',
+				'glow': 'glow 2s ease-in-out infinite'
+			},
+			fontFamily: {
+				'serif': ['var(--font-serif)'],
+				'sans': ['var(--font-sans)']
 			}
 		}
 	},

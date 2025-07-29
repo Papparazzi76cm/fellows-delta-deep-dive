@@ -2,39 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Fellows Blues Band Design System - Dark & Moody with Warm Accents */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    /* Dark base colors */
+    --background: 220 15% 8%;
+    --foreground: 45 8% 88%;
+    
+    /* Card and surface colors */
+    --card: 220 15% 12%;
+    --card-foreground: 45 8% 88%;
+    
+    --popover: 220 15% 12%;
+    --popover-foreground: 45 8% 88%;
+    
+    /* Primary blues brand colors */
+    --primary: 220 15% 5%;
+    --primary-foreground: 45 8% 95%;
+    
+    /* Secondary with anthracite grey */
+    --secondary: 220 8% 20%;
+    --secondary-foreground: 45 8% 88%;
+    
+    /* Muted tones */
+    --muted: 220 8% 15%;
+    --muted-foreground: 220 5% 55%;
+    
+    /* Warm golden accent */
+    --accent: 42 85% 60%;
+    --accent-foreground: 220 15% 8%;
+    
+    /* Bronze/warm accent variant */
+    --bronze: 25 70% 45%;
+    --bronze-foreground: 45 8% 95%;
+    
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    
+    --border: 220 8% 25%;
+    --input: 220 8% 18%;
+    --ring: 42 85% 60%;
 
     --radius: 0.5rem;
 
@@ -91,6 +99,28 @@ All colors MUST be HSL.
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Blues-specific design tokens */
+    --hero-overlay: 220 15% 8% / 0.8;
+    --parallax-overlay: 220 15% 5% / 0.6;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(220 15% 5%) 0%, hsl(220 8% 15%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(42 85% 60%) 0%, hsl(25 70% 45%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(220 15% 12%) 0%, hsl(220 8% 18%) 100%);
+    
+    /* Shadows */
+    --shadow-glow: 0 0 30px hsl(42 85% 60% / 0.3);
+    --shadow-deep: 0 20px 40px hsl(220 15% 5% / 0.5);
+    --shadow-card: 0 8px 32px hsl(220 15% 5% / 0.3);
+    
+    /* Typography - Serif for headings, Sans for body */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Source Sans Pro', system-ui, sans-serif;
+    
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 }
 
@@ -100,6 +130,48 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .parallax-container {
+    @apply relative overflow-hidden;
+  }
+  
+  .parallax-bg {
+    @apply absolute inset-0 w-full h-full object-cover;
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  .section-overlay {
+    @apply absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background/90;
+  }
+  
+  .hero-text-glow {
+    text-shadow: 0 0 20px hsl(42 85% 60% / 0.5);
+  }
+  
+  .card-hover {
+    @apply transition-all duration-500 hover:scale-105 hover:shadow-[var(--shadow-glow)];
+  }
+  
+  .btn-accent {
+    @apply bg-gradient-to-r from-accent to-bronze text-accent-foreground font-semibold px-8 py-3 rounded-lg;
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-glow)];
+    @apply active:scale-95;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-accent text-accent bg-transparent px-8 py-3 rounded-lg;
+    @apply transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:scale-105;
   }
 }
